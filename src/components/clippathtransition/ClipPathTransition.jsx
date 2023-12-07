@@ -60,14 +60,25 @@ const ClipPathTransition = () => {
     };
   }, [selectedSquare]);
 
+  const cardTexts = {
+    yellow: {
+      header: "Inhance Digital",
+      content: "Yellow Inhance lorem ipsum",
+    },
+    green: {
+      header: "Creating Margin",
+      content: "Green Creating Margin lorem ipsum",
+    },
+    blue: {
+      header: "PantSuit Professional",
+      content: "Blue Pantsuit Lorem Ipsum",
+    },
+    violet: { header: "The Peach Studio", content: "Peach Lorem Ipsum" },
+  };
+
   const renderSquares = () => {
     const squares = ["yellow", "green", "blue", "violet"];
-    const cardTexts = {
-      yellow: "Inhance Digital",
-      green: "Creating Margin",
-      blue: "PantSuit Professionals",
-      violet: "The Peach Studio",
-    };
+
     return squares.map((color, i) => (
       <motion.div
         key={i}
@@ -76,7 +87,7 @@ const ClipPathTransition = () => {
         variants={squareVariants}
         transition={{ duration: 0.2, type: "spring" }}
       >
-        {cardTexts[color]}
+        {cardTexts[color].header}
       </motion.div>
     ));
   };
@@ -97,14 +108,12 @@ const ClipPathTransition = () => {
             exit="exit"
           >
             <div className="card__header">
-              <h2>Lorem ipsum</h2>
+              <h2>{cardTexts[selectedSquare].header}</h2>
               <button onClick={() => setSelectedSquare(null)}>X</button>
             </div>
             <div className="card__content">
-              <div className="card__img-placeholder" />
               <div className="card__text-placeholder">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-                ea neque quidem exercitationem possimus.
+                {cardTexts[selectedSquare].content}
               </div>
             </div>
             <button

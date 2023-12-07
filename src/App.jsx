@@ -22,9 +22,9 @@ const App = () => {
       <section id="Branding">
         <Services />
       </section>
-      <section id="Portfolio">
+      {/* <section id="Portfolio"> */}
         <Portfolio />
-      </section>
+      {/* </section> */}
       <section id="Contact">
         <Contact />
       </section>
