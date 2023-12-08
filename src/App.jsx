@@ -18,9 +18,9 @@ const App = () => {
       <section id="Experience">
         <ClipPathTransition />
       </section>
-      <section id="Branding">
+      {/* <section id="Branding">
         <Services />
-      </section>
+      </section> */}
       <Portfolio />
       <section id="Contact">
         <Contact />

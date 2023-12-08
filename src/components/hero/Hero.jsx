@@ -25,13 +25,12 @@ const textVariants = {
 };
 const sliderVariants = {
   initial: {
-    x: 0,
+    x: "100%",
   },
   animate: {
-    x: "-220%",
+    x: "-290%",
     transition: {
       repeat: Infinity,
-      repeatType: "mirror",
       duration: 20,
     },
   },
@@ -52,24 +51,21 @@ const Hero = () => {
             Web developer and UI designer
           </motion.h1>
           <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>
-              See the Latest Works
+            <motion.button
+              variants={textVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.a href={`#Projects`}>See my Projects</motion.a>
             </motion.button>
-            <motion.button variants={textVariants}>
-              <motion.a
-                href={`#Contact`}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              ></motion.a>
-              Contact Me
+            <motion.button
+              variants={textVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.a href={`#Contact`}> Contact Me</motion.a>
             </motion.button>
           </motion.div>
-          <motion.img
-            variants={textVariants}
-            animate="scrollButton"
-            src="/scroll.png"
-            alt=""
-          />
         </motion.div>
       </div>
       <motion.div
