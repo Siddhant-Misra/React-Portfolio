@@ -1,4 +1,3 @@
-
 import "./app.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
@@ -22,9 +21,7 @@ const App = () => {
       <section id="Branding">
         <Services />
       </section>
-      {/* <section id="Portfolio"> */}
-        <Portfolio />
-      {/* </section> */}
+      <Portfolio />
       <section id="Contact">
         <Contact />
       </section>

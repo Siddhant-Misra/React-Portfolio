@@ -25,7 +25,7 @@ const itemVariants = {
 };
 
 const Links = () => {
-  const items = ["Homepage", "Experience", "Branding","Projects", "Contact"];
+  const items = ["Homepage", "Experience", "Branding", "Projects", "Contact"];
 
   return (
     <motion.div className="links" variants={variants}>

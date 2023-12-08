@@ -96,8 +96,9 @@ const ClipPathTransition = () => {
     <div
       className={`cp-transition cp-transition__container cp-transition__container--${selectedSquare}`}
     >
-      <AnimatePresence initial={false} mode="wait">
-        <h1 className="heading_card">MIDI IS THE FUTURE</h1>
+      <AnimatePresence initial={false}>
+        <h1 className="heading_card">Work Experience</h1>
+        <h4 className="heading_subcard">Click on the card!</h4>
         {selectedSquare ? (
           <motion.div
             className={`card card__wrapper card__wrapper--${selectedSquare}`}

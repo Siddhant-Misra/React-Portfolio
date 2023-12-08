@@ -6,7 +6,7 @@ const items = [
   {
     id: 1,
     title: "React Portfolio",
-    img: "/public/!Untitled.png",
+    img: "/!Untitled.png",
     desc: "This website was built using React, SCSS and Framer Motion and EmailJS to send emails from the Contact Us section of this page.",
     link: "https://www.youtube.com/",
   },
@@ -53,7 +53,7 @@ const Single = ({ item }) => {
 
   return (
     <section>
-      <div className="container">
+      <div className="container" id="Projects">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
             <img src={item.img} alt="" />
