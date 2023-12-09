@@ -115,6 +115,7 @@
       grid-template-columns: 1fr;
       grid-template-rows: min-content 1fr;
       gap: 20px;
+      overflow-x: scroll;
 
       &--yellow {
         background-color: whitesmoke;
@@ -165,15 +166,29 @@
 
     &__text-placeholder {
       text-align: justify;
-      line-height: 125%;
-      font-size: 1.6rem;
+      line-height: 175%;
+      font-size: 2rem;
       height: 100%;
-      width: 100%;
+      width: 50%;
       color: black;
+      margin: auto;
+    }
+
+    @media (min-width: 1920px) {
+      &__text-placeholder {
+        text-align: justify;
+        line-height: 175%;
+        font-size: 1.6rem;
+        height: 100%;
+        width: 50%;
+        color: black;
+        margin: auto;
+      }
     }
 
     &__button-close {
       width: 50%;
+      margin: auto;
       height: 10rem;
       background-color: green;
     }
