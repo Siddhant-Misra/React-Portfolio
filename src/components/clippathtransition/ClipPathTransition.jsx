@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./ClipPathTransition.scss";
+import CloseButton from "./closeButton/closeButton";
+
 const textVariants = {
   initial: {
     x: -500,
@@ -138,9 +140,7 @@ const ClipPathTransition = () => {
               <button onClick={() => setSelectedSquare(null)}>X</button>
             </div>
             <div className="card__content">
-              <div
-                className="card__text-placeholder"
-              >
+              <div className="card__text-placeholder">
                 <ul>
                   {cardTexts[selectedSquare].content.map((point, index) => (
                     <li key={`point-${index}`}>{point}</li>
@@ -148,13 +148,9 @@ const ClipPathTransition = () => {
                 </ul>
               </div>
             </div>
-
-            <button
-              className="card__button-close"
-              onClick={() => setSelectedSquare(null)}
-            >
-              X
-            </button>
+            <div className="card__button-close">
+              <CloseButton onClick={() => setSelectedSquare(null)} />
+            </div>
           </motion.div>
         ) : (
           <motion.div

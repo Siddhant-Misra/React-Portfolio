@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import "./portfolio.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const items = [
   {
@@ -8,7 +10,7 @@ const items = [
     title: "React Portfolio",
     img: "/!Untitled.png",
     desc: "This website was built using React, SCSS and Framer Motion and EmailJS to send emails from the Contact Us section of this page.",
-    link: "https://www.youtube.com/",
+    link: "",
   },
   {
     id: 2,
@@ -23,9 +25,18 @@ const items = [
     img: "https://images.pexels.com/photos/6894528/pexels-photo-6894528.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
     desc: "Some of the showcases of the HTML, CSS and JS projects I've done",
     links: [
-      { name: "Decommissioned Portfolio", link: "https://siddhant-misra.github.io/Decommissioned-Portfolio/" },
-      { name: "Random Quote Generator", link: "https://siddhant-misra.github.io/Random-Quote-Generator/" },
-      { name: "Portfolio", link: "https://siddhant-misra.github.io/Portfolio/" },
+      {
+        name: "Decommissioned Portfolio",
+        link: "https://siddhant-misra.github.io/Decommissioned-Portfolio/",
+      },
+      {
+        name: "Random Quote Generator",
+        link: "https://siddhant-misra.github.io/Random-Quote-Generator/",
+      },
+      {
+        name: "Portfolio",
+        link: "https://siddhant-misra.github.io/Portfolio/",
+      },
       { name: "Typing", link: "https://siddhant-misra.github.io/Typing/" },
     ],
   },
@@ -34,21 +45,25 @@ const items = [
     title: "Synapse Test",
     img: "https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     desc: "This is a implementation of a REST API that uses the API of Synapsefi to mimic digit.co. Synapsefi is a banking API platform. A user can create an acocunt, verify saod account using a government ID and a SSN. After verification, the user can then create two accounts. I used a CRON job to simulate a transaction from one account to another, hence showcasing a savings app.",
-    link: "https://github.com/Siddhant-Misra/SynapseTest"
+    link: "https://github.com/Siddhant-Misra/SynapseTest",
   },
 ];
 
 const Single = ({ item }) => {
   const ref = useRef();
-
   const { scrollYProgress } = useScroll({
     target: ref,
   });
-
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
-
   const handleButtonClick = (link) => {
-    window.open(link, "_blank");
+    if (item.id === 1) {
+      toast.info("Its this website!", {
+        autoClose: 1000,
+        position: "bottom-center",
+      });
+    } else {
+      window.open(link, "_blank");
+    }
   };
 
   return (
@@ -65,7 +80,10 @@ const Single = ({ item }) => {
             {item.id === 3 && item.links && item.links.length > 0 && (
               <div>
                 {item.links.map((linkObj, index) => (
-                  <button key={index} onClick={() => handleButtonClick(linkObj.link)}>
+                  <button
+                    key={index}
+                    onClick={() => handleButtonClick(linkObj.link)}
+                  >
                     {linkObj.name}
                   </button>
                 ))}
@@ -86,12 +104,10 @@ const Single = ({ item }) => {
 
 const Portfolio = () => {
   const ref = useRef();
-
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["end end", "start start"],
   });
-
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -106,6 +122,7 @@ const Portfolio = () => {
       {items.map((item) => (
         <Single item={item} key={item.id} />
       ))}
+      <ToastContainer />
     </div>
   );
 };
