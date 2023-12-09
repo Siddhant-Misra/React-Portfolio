@@ -140,9 +140,6 @@ const ClipPathTransition = () => {
             <div className="card__content">
               <div
                 className="card__text-placeholder"
-                // style={{
-                //   fontSize: selectedSquare === "yellow" ? "2rem" : "3.5rem",
-                // }}
               >
                 <ul>
                   {cardTexts[selectedSquare].content.map((point, index) => (
