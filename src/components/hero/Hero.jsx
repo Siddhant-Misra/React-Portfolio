@@ -48,8 +48,12 @@ const Hero = () => {
         >
           <motion.h2 variants={textVariants}>Siddhant Misra</motion.h2>
           <motion.h1 variants={textVariants}>
-            Web developer and UI designer
+            Developer and Tech Enthusiast
           </motion.h1>
+          <motion.h5 variants={textVariants}>
+            I love building solutions that focuses on solving a problem. I love writing clean, scalable and well-commented code. Everyone should be open to cross-platform and be comfortable working
+            with different teams.
+          </motion.h5>
           <motion.div variants={textVariants} className="buttons">
             <motion.button
               variants={textVariants}
