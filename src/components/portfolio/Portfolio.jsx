@@ -44,7 +44,7 @@ const items = [
     id: 4,
     title: "Synapse Test",
     img: "https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    desc: "This is a implementation of a REST API that uses the API of Synapsefi to mimic digit.co. Synapsefi is a banking API platform. A user can create an acocunt, verify saod account using a government ID and a SSN. After verification, the user can then create two accounts. I used a CRON job to simulate a transaction from one account to another, hence showcasing a savings app.",
+    desc: "This is a implementation of a REST API that uses the API of Synapsefi to mimic digit.co. Synapsefi is a banking API platform. A user can create an acocunt, verify said account using a government ID and a SSN. After verification, the user can then create two accounts. I used a CRON job to simulate a transaction from one account to another, hence showcasing a savings app.",
     link: "https://github.com/Siddhant-Misra/SynapseTest",
   },
 ];
