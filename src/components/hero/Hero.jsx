@@ -69,6 +69,11 @@ const Hero = () => {
             >
               <motion.a href={`#Contact`}> Contact Me</motion.a>
             </motion.button>
+            <motion.button>
+              <motion.a href="/Siddhant-Misra-Resume.pdf" download>
+                Download my Resume          
+              </motion.a>
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>
