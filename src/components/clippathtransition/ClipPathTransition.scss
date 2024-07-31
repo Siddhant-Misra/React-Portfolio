@@ -9,9 +9,13 @@
     background-color: #0c0c1d;
     // background-image: linear-gradient(to top, #111132, #0c0c1d);
 
-
     @media (max-width: 768px) {
       min-height: 250px;
+    }
+
+    @media (max-width: 480px) {
+      height: auto;
+      padding: 10px;
     }
 
     &>div {
@@ -45,13 +49,25 @@
     transition: all .2s;
     cursor: pointer;
 
+    @media (max-width: 768px) {
+      height: 200px;
+      width: 200px;
+      font-size: 24px;
+    }
+
+    @media (max-width: 480px) {
+      height: 150px !important;
+      width: 150px !important;
+      font-size: 18px !important;
+    }
+
     &--yellow {
       border: 2px solid #EAD200;
-      // background-color: #EAD200;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 32px;
+      text-align: center;
     }
 
     &--green {
@@ -60,6 +76,7 @@
       justify-content: center;
       align-items: center;
       font-size: 32px;
+      text-align: center;
     }
 
     &--violet {
@@ -68,6 +85,7 @@
       justify-content: center;
       align-items: center;
       font-size: 32px;
+      text-align: center;
     }
 
     &--blue {
@@ -77,6 +95,7 @@
       align-items: center;
       font-size: 32px;
       padding: 50px;
+      text-align: center;
     }
 
     &:hover {
@@ -89,6 +108,7 @@
       align-items: center;
       height: 100%;
       font-size: 32px;
+      text-align: center;
     }
   }
 
@@ -98,7 +118,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // background: white;
+    flex-wrap: wrap; // Wrap squares on small screens
+
+    @media (max-width: 480px) {
+      justify-content: center;
+      align-items: center;
+      height: auto;
+    }
   }
 
   .card {
@@ -117,6 +143,11 @@
       gap: 20px;
       overflow-x: scroll;
 
+      @media (max-width: 480px) {
+        padding: 15px;
+        gap: 10px;
+      }
+
       &--yellow {
         background-color: whitesmoke;
       }
@@ -132,7 +163,6 @@
       &--blue {
         background-color: white;
       }
-
     }
 
     &__header {
@@ -140,12 +170,15 @@
       justify-content: center;
       align-items: center;
 
-
       h2 {
         font-size: 3.2rem;
         font-weight: 700;
         color: black;
         text-align: center;
+
+        @media (max-width: 480px) {
+          font-size: 2.4rem;
+        }
       }
 
       button {
@@ -172,6 +205,11 @@
       width: 50%;
       color: black;
       margin: auto;
+
+      @media (max-width: 480px) {
+        font-size: 1.6rem;
+        width: 100%;
+      }
     }
 
     @media (min-width: 1920px) {
@@ -187,11 +225,9 @@
     }
 
     &__button-close {
-      
       margin: auto;
       margin-top: 0;
     }
-
   }
 }
 
@@ -201,6 +237,10 @@
   top: 20%;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 480px) {
+    top: 10%;
+  }
 }
 
 .heading_subcard {
@@ -209,4 +249,8 @@
   top: 25%;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 480px) {
+    top: 15%;
+  }
 }
