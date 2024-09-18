@@ -1,96 +1,48 @@
-import { useRef } from "react";
+
 import "./services.scss";
-import { motion, useInView } from "framer-motion";
+// import "./serviceStyle.css"
+import { useState } from "react";
+import { initialTabs as tabs } from "./categories"; // Assuming categories.js has been updated with the earlier code
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
-const variants = {
-  initial: {
-    x: -500,
-    y: 100,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const Services = () => {
-  const ref = useRef();
-
-  const isInView = useInView(ref, { margin: "-100px" });
+export default function App() {
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   return (
-    <motion.div
-      className="services"
-      variants={variants}
-      initial="initial"
-      // animate="animate"
-      // whileInView="animate"
-      ref={ref}
-      animate={"animate"}
-    >
-      <motion.div className="listContainer" variants={variants}>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-        
-        <motion.div
-          className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
-        >
-          <h2>Branding</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
-          </p>
-          <button>Go</button>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+    <div className="headingService">
+       <h1  className="main-title">Skills</h1>
+       
+    <div className="window">
+      <nav>
+        <ul>
+          {tabs.map((item) => (
+            <li
+              key={item.category}
+              className={item === selectedTab ? "selected" : ""}
+              onClick={() => setSelectedTab(item)}
+            >
+              {item.category}
+              {item === selectedTab ? (
+                <motion.div className="underline" layoutId="underline" />
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main>
+        <AnimatePresence mode="wait">
+          <motion.div className="textMain"
+            key={selectedTab ? selectedTab.category : "empty"}
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {selectedTab ? selectedTab.items.join(", ") : "😋"}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+    </div>
+    </div>
   );
-};
-
-export default Services;
+}

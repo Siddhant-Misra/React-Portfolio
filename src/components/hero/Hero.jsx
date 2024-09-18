@@ -46,14 +46,13 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          <motion.h2 variants={textVariants}>Siddhant Misra</motion.h2>
-          <motion.h1 variants={textVariants}>
-            Developer and Tech Enthusiast
-          </motion.h1>
-          <motion.h5 variants={textVariants}>
-            I love building solutions that focuses on solving a problem. I love writing clean, scalable and well-commented code. Everyone should be open to cross-platform and be comfortable working
-            with different teams.
-          </motion.h5>
+          <motion.h1 variants={textVariants}>Siddhant Misra</motion.h1>
+          <motion.h2 variants={textVariants}>
+            Full Stack Engineer turned <br /> Product Manager
+          </motion.h2>
+          <motion.h3 variants={textVariants}>
+          Full Stack Engineer transitioning into Product Management, with over 5 years of experience in software development and product design. I combine technical expertise with a passion for user-centric solutions to drive innovation and business growth. <br/> <br/> Skilled in leading cross-functional teams, optimizing performance, and effectively communicating with stakeholders.
+          </motion.h3>
           <motion.div variants={textVariants} className="buttons">
             <motion.button
               variants={textVariants}
@@ -86,7 +85,7 @@ const Hero = () => {
         Siddhant Misra
       </motion.div>
       <div className="imageContainer">
-        <img src="/hero1.png" alt="" />
+        <img src="/hero2.jpg" alt="" />
       </div>
     </div>
   );
