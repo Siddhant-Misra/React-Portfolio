@@ -51,7 +51,7 @@ const Hero = () => {
             Full Stack Engineer turned <br /> Product Manager
           </motion.h2>
           <motion.h3 variants={textVariants}>
-          Full Stack Engineer transitioning into Product Management, with over 5 years of experience in software development and product design. I combine technical expertise with a passion for user-centric solutions to drive innovation and business growth. <br/> <br/> Skilled in leading cross-functional teams, optimizing performance, and effectively communicating with stakeholders.
+          With over 5 years of experience in Full Stack Development and Product Management, I combine technical expertise with a passion for user-centric solutions to drive innovation and business growth. <br/> <br/> Skilled in leading cross-functional teams, optimizing performance, and effectively communicating with stakeholders.
           </motion.h3>
           <motion.div variants={textVariants} className="buttons">
             <motion.button

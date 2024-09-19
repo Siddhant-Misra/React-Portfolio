@@ -2,7 +2,7 @@
 const allCategories = [
   { 
       category: "Product Management", 
-      items: ["User Research", "Feature Development", "Stakeholder Communication", "Healthcare Compliance", "Web Accessibility Standards"] 
+      items: ["User Research", "Feature Development", "Stakeholder Management", "Healthcare Compliance", "Web Accessibility Standards"] 
   },
   { 
       category: "Technical", 
