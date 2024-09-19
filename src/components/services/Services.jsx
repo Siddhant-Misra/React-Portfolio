@@ -1,16 +1,15 @@
-
 import "./services.scss";
-// import "./serviceStyle.css"
+import "./services.css"
 import { useState } from "react";
-import { initialTabs as tabs } from "./categories"; // Assuming categories.js has been updated with the earlier code
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { initialTabs as tabs } from "./categories";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function App() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   return (
-    <div className="headingService">
-       <h1  className="main-title">Skills</h1>
+    <div className="services-container">
+       <h1 className="main-title">Skills</h1>
        
     <div className="window">
       <nav>

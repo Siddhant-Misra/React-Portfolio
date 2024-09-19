@@ -144,7 +144,7 @@ const ClipPathTransition = () => {
               <div className="card__text-placeholder">
                 <ul>
                   {cardTexts[selectedSquare].content.map((point, index) => (
-                    <li key={`point-${index}`}>{point}</li>
+                    <li className="liDifferent" key={`point-${index}`}>{point}</li>
                   ))}
                 </ul>
               </div>
