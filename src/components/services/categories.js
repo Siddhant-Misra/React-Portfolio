@@ -1,9 +1,22 @@
 // Define the array of categories and their respective items
 const allCategories = [
-  { 
-      category: "Product Management", 
-      items: ["User Research", "Feature Development", "Stakeholder Management", "Healthcare Compliance", "Web Accessibility Standards"] 
-  },
+    {
+        "category": "Product Management",
+        "items": [
+            "User Research",
+            "A/B Testing",
+            "Product Design",
+            "Development Leadership",
+            "Cross-functional Team Collaboration",
+            "Data-driven Decision Making",
+            "Stakeholder Management",
+            "Budget Management",
+            "Vendor Assessment",
+            "SEO",
+            "Web Optimization"
+        ]
+    },
+    
   { 
       category: "Technical", 
       items: [
@@ -21,10 +34,9 @@ const allCategories = [
       category: "Tools", 
       items: [
           "JavaScript", 
-          "React", 
-          "Node.js", 
+          "ReactJS", 
+          "Nodejs", 
           "VueJS", 
-          "Nuxt", 
           "MongoDB", 
           "Firebase", 
           "Google Analytics", 
@@ -35,9 +47,6 @@ const allCategories = [
           "Trello", 
           "Figma", 
           "Adobe Suite", 
-          "SQL", 
-          "PostgreSQL", 
-          "MySQL"
       ] 
   },
   { 
