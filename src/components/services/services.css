@@ -1,11 +1,11 @@
 .services-container {
   width: 70%;
-  height: 50%;
+  height: 80vh; /* Increase height of the entire section */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Ensure even distribution of content */
 }
 
 .services-container h1.main-title {
@@ -20,12 +20,11 @@
 
 .services-container .window {
   width: 100%;
-  height: 100%;
+  flex-grow: 1; /* Make sure it grows to fill the remaining height */
   border-radius: 10px;
   background: white;
   overflow: hidden;
-  box-shadow: 0 2px 4px hsl(0deg 0% 0% / 0.1),
-      0 4px 8px hsl(0deg 0% 0% / 0.1);
+  box-shadow: 0 2px 4px hsl(0deg 0% 0% / 0.1), 0 4px 8px hsl(0deg 0% 0% / 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,75 +34,44 @@
 .services-container nav {
   background: #333398;
   padding: 5px 10px;
-  border-radius: 10px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 10px 10px 0 0;
   border-bottom: 1px solid #666363;
   height: auto;
   width: 100%;
   text-align: center;
-}
-
-.services-container .tabs {
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  flex-wrap: nowrap;
-  width: 50%;
-}
-
-.services-container main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  flex-grow: 1;
-  user-select: none;
-  padding: 20px;
-  text-align: center;
-}
-
-.services-container ul,
-.services-container li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 24px;
+  position: sticky; /* Stick to the top */
+  top: 0; /* Ensure it stays at the top */
+  z-index: 1; /* Ensure it's above other content */
 }
 
 .services-container ul {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 10px 0;
+  width: 100%;
 }
 
 .services-container li {
+  flex: 1 1 45%; /* Flex-grow, flex-shrink, and flex-basis for even distribution */
+  margin: 10px;
+  padding: 15px;
+  font-size: 20px;
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  width: 100%;
-  padding: 10px 20px;
-  position: relative;
   background: white;
   cursor: pointer;
-  height: auto;
+  color: #666;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #666;
-  border-left: none;
-  border-top: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0 10px;
 }
 
 .services-container li.selected {
   background: #0c0c1d;
   color: #fff;
-  /* border-bottom: 3px solid red; */
 }
 
 .services-container .underline {
@@ -127,32 +95,24 @@
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .services-container {
-      width: 90%;
-  }
-
-  .services-container h1.main-title {
-      font-size: 32px;
-  }
-
-  .services-container main {
-      font-size: 20px;
-      padding: 10px;
+    width: 90%;
+    height: auto; /* Adjust height for mobile */
   }
 
   .services-container ul {
-      flex-direction: column;
-      padding: 0;
+    flex-direction: row; /* Ensure they align side by side */
+    flex-wrap: wrap;
   }
 
   .services-container li {
-      width: auto;
-      padding: 15px;
-      font-size: 20px;
-      margin-bottom: 10px;
+    flex: 1 1 45%; /* Allow items to be 45% width with equal spacing */
+    margin: 10px;
+    padding: 15px;
+    font-size: 20px;
   }
 
   .services-container .textMain {
-      font-size: 20px;
-      padding: 15px;
+    font-size: 20px;
+    padding: 15px;
   }
 }
