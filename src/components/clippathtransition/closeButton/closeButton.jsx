@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const draw = {
@@ -17,8 +17,26 @@ const draw = {
 };
 
 const CloseButton = ({ onClick }) => {
+  const [circleRadius, setCircleRadius] = useState(150); // Default size for desktop
   const strokeWidth = "8";
-  const circleRadius = 150; // Set the desired radius for the circle
+
+  // Adjust the circle size for mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setCircleRadius(80); // Smaller size for mobile
+      } else {
+        setCircleRadius(150); // Default size for desktop
+      }
+    };
+
+    // Run on mount and when resizing
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    // Cleanup listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <motion.svg
