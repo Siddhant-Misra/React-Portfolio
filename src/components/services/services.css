@@ -1,11 +1,11 @@
 .services-container {
-  width: 70%;
-  height: 80vh; /* Increase height of the entire section */
+  width: 50%;
+  height: 50%; 
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Ensure even distribution of content */
+  justify-content: center;
 }
 
 .services-container h1.main-title {
@@ -20,15 +20,15 @@
 
 .services-container .window {
   width: 100%;
-  flex-grow: 1; /* Make sure it grows to fill the remaining height */
+  flex-grow: 1; 
   border-radius: 10px;
   background: white;
   overflow: hidden;
   box-shadow: 0 2px 4px hsl(0deg 0% 0% / 0.1), 0 4px 8px hsl(0deg 0% 0% / 0.1);
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .services-container nav {
@@ -53,7 +53,7 @@
 }
 
 .services-container li {
-  flex: 1 1 45%; /* Flex-grow, flex-shrink, and flex-basis for even distribution */
+  flex: 1 1 15%; /* Flex-grow, flex-shrink, and flex-basis for even distribution */
   margin: 10px;
   padding: 15px;
   font-size: 20px;
