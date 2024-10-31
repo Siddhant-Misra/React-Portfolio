@@ -48,10 +48,22 @@ const Hero = () => {
         >
           <motion.h1 variants={textVariants}>Siddhant Misra</motion.h1>
           <motion.h2 variants={textVariants}>
-            Full Stack Engineer turned <br /> Product Manager
+            Product Manager 
           </motion.h2>
           <motion.h3 variants={textVariants}>
-          With over 5 years of experience in Full Stack Development and Product Management, I combine technical expertise with a passion for user-centric solutions to drive innovation and business growth. <br/> <br/> Skilled in leading cross-functional teams, optimizing performance, and effectively communicating with stakeholders.
+            Product Manager with 8+ years of experience developing, launching,
+            and optimizing mobile and web products to align with customer needs
+            and business objectives. <br />
+            <br />
+            Skilled in directing entire product lifecycles, from ideation to
+            market launch, and driving product roadmaps that enhance user
+            experiences and drive revenue growth. <br />
+            Successful at utilizing data analytics to inform decision-making,
+            collaborating with stakeholders, and delivering innovative solutions
+            in fast-paced environments. <br />
+            Excellent at identifying market opportunities, conducting user
+            research, and executing go-to-market strategies to achieve business
+            goals.
           </motion.h3>
           <motion.div variants={textVariants} className="buttons">
             <motion.button
@@ -69,8 +81,8 @@ const Hero = () => {
               <motion.a href={`#Contact`}> Contact Me</motion.a>
             </motion.button>
             <motion.button>
-              <motion.a href="/Siddhant-Misra-Resume.pdf" download>
-                Download my Resume          
+              <motion.a href="/Siddhant-Misra.pdf" download>
+                Download my Resume
               </motion.a>
             </motion.button>
           </motion.div>
