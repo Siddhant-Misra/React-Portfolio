@@ -47,9 +47,7 @@ const Hero = () => {
           animate="animate"
         >
           <motion.h1 variants={textVariants}>Siddhant Misra</motion.h1>
-          <motion.h2 variants={textVariants}>
-            Product Manager 
-          </motion.h2>
+          <motion.h2 variants={textVariants}>Product Manager</motion.h2>
           <motion.h3 variants={textVariants}>
             Product Manager with 8+ years of experience developing, launching,
             and optimizing mobile and web products to align with customer needs
@@ -80,22 +78,31 @@ const Hero = () => {
             >
               <motion.a href={`#Contact`}> Contact Me</motion.a>
             </motion.button>
-            <motion.button>
-              <motion.a href="/Siddhant-Misra.pdf" download>
+            <motion.button
+              variants={textVariants}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.a
+                href="/Siddhant_Misra.pdf"
+                download="Siddhant_Misra.pdf"
+                target="_blank"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 Download my Resume
               </motion.a>
             </motion.button>
           </motion.div>
         </motion.div>
       </div>
-      <motion.div
+      {/* <motion.div
         className="slidingTextContainer"
         variants={sliderVariants}
         initial="initial"
         animate="animate"
       >
         Siddhant Misra
-      </motion.div>
+      </motion.div> */}
       <div className="imageContainer">
         <img src="/hero2.jpg" alt="" />
       </div>

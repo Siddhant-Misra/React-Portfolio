@@ -10,21 +10,22 @@ const Navbar = () => {
 
   useEffect(() => {
     if (!hasNotificationBeenDisplayedRef.current) {
-      // Display a toast notification when the component mounts
       toast("Welcome to my website. CSS sometimes is fun and hell.", {
+        toastId: "welcome-toast", // Ensure only one toast with this ID appears
         position: "top-right",
-        autoClose: 5000, // Set the duration for the notification
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
-        theme: "dark"
+        theme: "dark",
       });
-
-      // Set the ref to true to indicate that the notification has been displayed
+  
       hasNotificationBeenDisplayedRef.current = true;
     }
   }, []);
+  
+  
 
   return (
     <div className="navbar">
@@ -36,7 +37,7 @@ const Navbar = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          Siddhant Misra
+          
         </motion.span>
         <div className="social">
           <a href="https://github.com/Siddhant-Misra" target="_blank">
