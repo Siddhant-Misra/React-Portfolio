@@ -8,8 +8,13 @@
   background-repeat: no-repeat;
   position: fixed;
   z-index: 999;
+  pointer-events: none;
 
   @include mobile{
+    display: none;
+  }
+
+  @media (max-width: 768px) {
     display: none;
   }
 }

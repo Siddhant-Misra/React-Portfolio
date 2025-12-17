@@ -2,26 +2,22 @@ import "./app.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
-import Navbar from "./components/navbar/Navbar";
-import Portfolio from "./components/portfolio/Portfolio";
-import Services from "./components/services/Services";
-import ClipPathTransition from "./components/clippathtransition/ClipPathTransition";
+import ClipPathTransition from "./components/clipPathTransition/ClipPathTransition";
+import CaseStudies from "./components/caseStudies/CaseStudies";
 
 const App = () => {
   return (
     <div>
       <Cursor />
       <section id="Homepage">
-        <Navbar />
         <Hero />
       </section>
       <section id="Experience">
         <ClipPathTransition />
       </section>
-      <section id="Skills">
-        <Services />
+      <section id="CaseStudies">
+        <CaseStudies />
       </section>
-      <Portfolio />
       <section id="Contact">
         <Contact />
       </section>

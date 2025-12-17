@@ -1,6 +1,7 @@
 html {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  height: auto;
+  min-height: 100%;
 }
 
 * {
@@ -13,7 +14,16 @@ html {
 body {
   background-color: #0c0c1d;
   color: lightgray;
-  overflow-x: hidden !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+  min-height: 100%;
+}
+
+#root {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
 }
 
 a {
@@ -22,16 +32,8 @@ a {
 }
 
 section {
-  height: 100vh;
-  width: 100vw;
-  scroll-snap-align: center;
-  overflow: hidden;
-}
-
-#Skills {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  overflow: visible;
 }
 
 @mixin mobile {

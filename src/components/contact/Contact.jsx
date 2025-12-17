@@ -1,38 +1,17 @@
 import { useRef, useState, useEffect } from "react";
 import "./contact.scss";
-import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
-const variants = {
-  initial: {
-    y: 500,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const Contact = () => {
-  const ref = useRef();
   const formRef = useRef();
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [isVisible, setIsVisible] = useState(false); // State to handle button visibility
+  const [isVisible, setIsVisible] = useState(false);
 
-  const isInView = useInView(ref, { margin: "-100px" });
-
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Check for scroll event to toggle button visibility
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -43,7 +22,6 @@ const Contact = () => {
     };
 
     window.addEventListener("scroll", toggleVisibility);
-
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
@@ -79,55 +57,62 @@ const Contact = () => {
   };
 
   return (
-    <motion.div
-      ref={ref}
-      className="contact"
-      variants={variants}
-      initial="initial"
-      whileInView="animate"
-    >
-      {/* Main content */}
-      <motion.div className="textContainer" variants={variants}>
-        <motion.h1 variants={variants}>Let’s work together</motion.h1>
-        <motion.div className="item" variants={variants}>
-          <h2>Mail</h2>
-          <span>msiddhant22@gmail.com</span>
-        </motion.div>
-        <motion.div className="item" variants={variants}>
-          <h2>Address</h2>
-          <span>California</span>
-        </motion.div>
-        <motion.div className="item" variants={variants}>
-          <h2>Phone</h2>
-          <span>+1 (347) 620-5917</span>
-        </motion.div>
-      </motion.div>
-      
-      <div className="formContainer">
-        {/* Form */}
-        <motion.form
-          ref={formRef}
-          onSubmit={sendEmail}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 3, duration: 2 }}
-        >
-          <input type="text" required placeholder="Name" name="name" />
-          <input type="email" required placeholder="Email" name="email" />
-          <textarea rows={8} placeholder="Message" name="message" />
-          <button>Submit</button>
-          {error && "Error"}
-          {success && "Success"}
-        </motion.form>
+    <div className="contact">
+      <div className="contact__inner">
+        <div className="textContainer">
+          <h1>Let's work together</h1>
+          <div className="contact-info">
+            <div className="item">
+              <h2>Email</h2>
+              <span>msiddhant22@gmail.com</span>
+            </div>
+            <div className="item">
+              <h2>Phone</h2>
+              <span>862.285.8854</span>
+            </div>
+            <div className="item">
+              <h2>Location</h2>
+              <span>San Francisco, CA</span>
+            </div>
+          </div>
+          <div className="social-links">
+            <a
+              href="https://www.linkedin.com/in/siddhant-misra/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/linkedin.png" alt="LinkedIn" />
+              <span>linkedin.com/in/siddhant-misra</span>
+            </a>
+            <a
+              href="https://github.com/Siddhant-Misra"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/github.png" alt="GitHub" />
+              <span>github.com/Siddhant-Misra</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="formContainer">
+          <form ref={formRef} onSubmit={sendEmail}>
+            <input type="text" required placeholder="Name" name="name" />
+            <input type="email" required placeholder="Email" name="email" />
+            <textarea rows={8} placeholder="Message" name="message" />
+            <button type="submit">Submit</button>
+            {error && <span className="error-msg">Error sending message</span>}
+            {success && <span className="success-msg">Message sent!</span>}
+          </form>
+        </div>
       </div>
 
-      {/* Scroll to Top Button */}
       {isVisible && (
         <button className="scrollToTop" onClick={scrollToTop}>
           ↑
         </button>
       )}
-    </motion.div>
+    </div>
   );
 };
 

@@ -96,23 +96,90 @@
 @media (max-width: 768px) {
   .services-container {
     width: 90%;
-    height: auto; /* Adjust height for mobile */
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .services-container h1.main-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  .services-container .window {
+    overflow: visible;
+  }
+
+  .services-container nav {
+    padding: 10px 5px;
+    position: relative;
   }
 
   .services-container ul {
-    flex-direction: row; /* Ensure they align side by side */
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 5px;
   }
 
   .services-container li {
-    flex: 1 1 45%; /* Allow items to be 45% width with equal spacing */
-    margin: 10px;
-    padding: 15px;
-    font-size: 20px;
+    flex: none;
+    width: 100%;
+    margin: 0;
+    padding: 14px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 10;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .services-container li.selected {
+    background: #0c0c1d;
+    color: #fff;
+  }
+
+  .services-container main {
+    padding: 15px 10px;
+    overflow-x: hidden;
   }
 
   .services-container .textMain {
-    font-size: 20px;
-    padding: 15px;
+    font-size: 16px;
+    padding: 10px;
+    line-height: 1.5;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .services-container {
+    width: 95%;
+  }
+
+  .services-container h1.main-title {
+    font-size: 24px;
+  }
+
+  .services-container li {
+    font-size: 14px;
+    padding: 12px 8px;
+  }
+
+  .services-container .textMain {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Ensure no horizontal scroll */
+.services-container,
+.services-container .window,
+.services-container main,
+.services-container .textMain {
+  max-width: 100%;
+  box-sizing: border-box;
 }

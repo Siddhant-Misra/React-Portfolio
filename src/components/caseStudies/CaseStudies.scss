@@ -1,0 +1,348 @@
+@import "../../app.scss";
+
+.case-studies-section {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #111132;
+  padding: 80px 60px 80px 260px; // Extra left padding for fixed sidebar
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
+}
+
+.case-studies-header {
+  max-width: 800px;
+  margin: 0 auto 50px;
+
+  h2 {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #666;
+  }
+}
+
+.case-studies-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.case-study-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-color, rgba(255, 255, 255, 0.15));
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__content {
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+
+      @media (max-width: 600px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    color: #666;
+  }
+
+  &__teaser {
+    font-size: 14px;
+    color: #999;
+    margin-top: 8px;
+    line-height: 1.5;
+
+    @media (max-width: 600px) {
+      font-size: 13px;
+    }
+  }
+
+  &__arrow {
+    font-size: 20px;
+    color: #666;
+    transition: transform 0.2s, color 0.2s;
+    flex-shrink: 0;
+    margin-left: 20px;
+
+    @media (max-width: 600px) {
+      align-self: flex-end;
+      margin-left: 0;
+    }
+  }
+
+  &:hover &__arrow {
+    transform: translateX(5px);
+    color: var(--accent-color, #a78bfa);
+  }
+}
+
+// Full-page modal for case studies
+.case-study-modal--fullpage {
+  width: 90vw !important;
+  max-width: 1000px !important;
+  height: 90vh !important;
+  max-height: 90vh !important;
+
+  @media (max-width: 768px) {
+    width: 95vw !important;
+    height: 95vh !important;
+    max-height: 95vh !important;
+  }
+
+  .modal__header {
+    padding: 25px 30px;
+    border-bottom: 3px solid;
+    position: sticky;
+    top: 0;
+    background: #1a1a2e;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 16px 16px 0 0;
+
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.3;
+
+      @media (max-width: 768px) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .modal__close {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 1.4rem;
+    color: #888;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    margin-left: 20px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+  }
+
+  .modal__content {
+    padding: 30px;
+    overflow-y: auto;
+    height: calc(90vh - 100px);
+
+    @media (max-width: 768px) {
+      padding: 20px;
+      height: calc(95vh - 90px);
+    }
+  }
+}
+
+.modal__subtitle {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+// Case study content styling
+.case-study-content {
+  &__oneliner {
+    font-size: 1.15rem;
+    color: #b0b0b0;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-style: italic;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__section {
+    margin-bottom: 30px;
+
+    h4 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+
+    > p {
+      font-size: 0.95rem;
+      color: #c0c0c0;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    > ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 15px 0;
+
+      li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #b0b0b0;
+
+        &::before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  &__conclusion {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  &__subsection {
+    margin: 20px 0;
+    padding-left: 15px;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+
+    h5 {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #b0b0b0;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0 0;
+
+      li {
+        position: relative;
+        padding-left: 18px;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #a0a0a0;
+
+        &::before {
+          content: "–";
+          position: absolute;
+          left: 0;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  &__detail {
+    font-size: 0.85rem !important;
+    color: #888 !important;
+    font-style: italic;
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    min-width: 600px;
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      color: #b0b0b0;
+      line-height: 1.5;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+  }
+}
