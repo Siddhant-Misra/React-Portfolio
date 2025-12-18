@@ -6,6 +6,22 @@
   padding: 80px 60px 80px 260px; // Extra left padding for fixed sidebar
   box-sizing: border-box;
 
+  @media (min-width: 1440px) {
+    padding: 100px 80px 100px 280px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 100px 120px 100px 320px;
+  }
+
+  @media (min-width: 2560px) {
+    padding: 120px 150px 120px 380px;
+  }
+
+  @media (min-width: 3840px) {
+    padding: 140px 200px 140px 450px;
+  }
+
   @media (max-width: 768px) {
     padding: 60px 20px;
   }
@@ -15,17 +31,61 @@
   max-width: 800px;
   margin: 0 auto 50px;
 
+  @media (min-width: 1440px) {
+    max-width: 900px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 1000px;
+  }
+
+  @media (min-width: 2560px) {
+    max-width: 1300px;
+    margin-bottom: 70px;
+  }
+
+  @media (min-width: 3840px) {
+    max-width: 1600px;
+    margin-bottom: 90px;
+  }
+
   h2 {
     font-size: 14px;
     color: #888;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
+
+    @media (min-width: 1920px) {
+      font-size: 15px;
+    }
+
+    @media (min-width: 2560px) {
+      font-size: 16px;
+      letter-spacing: 3px;
+    }
+
+    @media (min-width: 3840px) {
+      font-size: 18px;
+      letter-spacing: 4px;
+    }
   }
 
   p {
     font-size: 14px;
     color: #666;
+
+    @media (min-width: 1920px) {
+      font-size: 15px;
+    }
+
+    @media (min-width: 2560px) {
+      font-size: 17px;
+    }
+
+    @media (min-width: 3840px) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -36,6 +96,22 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+
+  @media (min-width: 1440px) {
+    max-width: 900px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 1000px;
+  }
+
+  @media (min-width: 2560px) {
+    max-width: 1300px;
+  }
+
+  @media (min-width: 3840px) {
+    max-width: 1600px;
+  }
 }
 
 .experience-item {
@@ -58,6 +134,16 @@
     border-bottom: none;
   }
 
+  @media (min-width: 2560px) {
+    gap: 60px;
+    padding: 35px 0;
+  }
+
+  @media (min-width: 3840px) {
+    gap: 80px;
+    padding: 45px 0;
+  }
+
   @media (max-width: 600px) {
     flex-direction: column;
     gap: 8px;
@@ -69,6 +155,16 @@
     font-size: 13px;
     color: #666;
     padding-top: 4px;
+
+    @media (min-width: 2560px) {
+      width: 200px;
+      font-size: 15px;
+    }
+
+    @media (min-width: 3840px) {
+      width: 240px;
+      font-size: 18px;
+    }
 
     @media (max-width: 600px) {
       width: auto;
@@ -85,6 +181,16 @@
     color: #fff;
     margin-bottom: 4px;
     transition: color 0.2s;
+
+    @media (min-width: 2560px) {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 3840px) {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
   }
 
   &:hover &__company {
@@ -95,11 +201,29 @@
     font-size: 15px;
     color: #999;
     margin-bottom: 4px;
+
+    @media (min-width: 2560px) {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    @media (min-width: 3840px) {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
   }
 
   &__location {
     font-size: 13px;
     color: #666;
+
+    @media (min-width: 2560px) {
+      font-size: 15px;
+    }
+
+    @media (min-width: 3840px) {
+      font-size: 18px;
+    }
   }
 }
 

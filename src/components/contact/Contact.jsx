@@ -37,10 +37,12 @@ const Contact = () => {
       )
       .then(
         (result) => {
+          console.log("EmailJS Success:", result.text);
           setSuccess(true);
           resetFormAndMessages();
         },
         (error) => {
+          console.error("EmailJS Error:", error.text);
           setError(true);
           resetFormAndMessages();
         }
