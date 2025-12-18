@@ -2,7 +2,7 @@ import "./app.scss";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
-import ClipPathTransition from "./components/clipPathTransition/ClipPathTransition";
+import ClipPathTransition from "./components/clippathtransition/ClipPathTransition";
 import CaseStudies from "./components/caseStudies/CaseStudies";
 
 const App = () => {
