@@ -40,14 +40,6 @@ const Hero = () => {
               <span>GitHub</span>
             </a>
           </div>
-          <a
-            href="/Siddhant_Misra.pdf"
-            download="Siddhant_Misra.pdf"
-            target="_blank"
-            className="sidebar__resume"
-          >
-            Download Resume
-          </a>
         </div>
       </aside>
 
