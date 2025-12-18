@@ -1,18 +1,119 @@
 import "./hero.scss";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Hero = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const navLinks = [
     { name: "Home", href: "#Homepage" },
     { name: "About", href: "#About" },
     { name: "Experience", href: "#Experience" },
     { name: "Case Studies", href: "#CaseStudies" },
+    { name: "AI Playbook", href: "#AIPlaybook" },
     { name: "Contact", href: "#Contact" },
   ];
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
+
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
+
+  const drawerVariants = {
+    closed: { x: "-100%", transition: { duration: 0.3, ease: "easeInOut" } },
+    open: { x: 0, transition: { duration: 0.3, ease: "easeInOut" } },
+  };
+
+  const overlayVariants = {
+    closed: { opacity: 0, transition: { duration: 0.3 } },
+    open: { opacity: 1, transition: { duration: 0.3 } },
+  };
+
   return (
     <div className="hero-section">
-      {/* Left Sidebar */}
+      {/* Mobile Header */}
+      <div className="mobile-header">
+        <button
+          className="hamburger-btn"
+          onClick={() => setMobileMenuOpen(true)}
+          aria-label="Open menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div
+              className="mobile-overlay"
+              variants={overlayVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.aside
+              className="mobile-drawer"
+              variants={drawerVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              <button
+                className="mobile-drawer__close"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+              <nav className="mobile-drawer__nav">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="mobile-drawer__link"
+                    onClick={handleNavClick}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+              <div className="mobile-drawer__social">
+                <a
+                  href="https://www.linkedin.com/in/siddhant-misra/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="/linkedin.png" alt="LinkedIn" />
+                </a>
+                <a
+                  href="https://github.com/Siddhant-Misra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="/github.png" alt="GitHub" />
+                </a>
+              </div>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Desktop Sidebar */}
       <aside className="sidebar">
         <nav className="sidebar__nav">
           {navLinks.map((link) => (
