@@ -172,8 +172,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Technical PM with a full-stack background. I prototype, ship, and
-              speak fluent engineer.
+              Former full-stack engineer turned PM. Scaling an ML platform to 20K+
+              users. Previously shipped HIPAA-compliant products for U.S. Army
+              and Fortune 500 clients.
             </motion.p>
           </div>
         </div>
