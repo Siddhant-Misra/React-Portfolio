@@ -172,9 +172,11 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Former full-stack engineer turned PM. Scaling an ML platform to 20K+
-              users. Previously shipped HIPAA-compliant products for U.S. Army
-              and Fortune 500 clients.
+              Former full-stack engineer turned PM.
+              <br />
+              Scaling an ML platform to 20K+ users.
+              <br />
+              Previously shipped HIPAA-compliant products for U.S. Army and Fortune 500 clients.
             </motion.p>
           </div>
         </div>
