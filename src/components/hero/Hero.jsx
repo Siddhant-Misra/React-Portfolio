@@ -172,8 +172,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Scaling ML-powered analytics to 20K+ users. Previously shipped for
-              U.S. Army, Booz Allen, and AstraZeneca.
+              Technical PM with a full-stack background. I prototype, ship, and
+              speak fluent engineer.
             </motion.p>
           </div>
         </div>
