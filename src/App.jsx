@@ -1,15 +1,15 @@
 import "./app.scss";
+import { Routes, Route } from "react-router-dom";
 import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import ClipPathTransition from "./components/clippathtransition/ClipPathTransition";
 import CaseStudies from "./components/caseStudies/CaseStudies";
-import AIPlaybook from "./components/aiPlaybook/AIPlaybook";
+import AIPlaybookPage from "./pages/AIPlaybookPage";
 
-const App = () => {
+const MainPage = () => {
   return (
-    <div>
-      <Cursor />
+    <>
       <section id="Homepage">
         <Hero />
       </section>
@@ -19,12 +19,21 @@ const App = () => {
       <section id="CaseStudies">
         <CaseStudies />
       </section>
-      <section id="AIPlaybook">
-        <AIPlaybook />
-      </section>
       <section id="Contact">
         <Contact />
       </section>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <div>
+      <Cursor />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/ai-playbook" element={<AIPlaybookPage />} />
+      </Routes>
     </div>
   );
 };

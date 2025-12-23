@@ -1,18 +1,42 @@
 import "./hero.scss";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("Homepage");
 
   const navLinks = [
-    { name: "Home", href: "#Homepage" },
-    { name: "About", href: "#About" },
-    { name: "Experience", href: "#Experience" },
-    { name: "Case Studies", href: "#CaseStudies" },
-    { name: "AI Playbook", href: "#AIPlaybook" },
-    { name: "Contact", href: "#Contact" },
+    { name: "Home", href: "#Homepage", sectionId: "Homepage" },
+    { name: "About", href: "#About", sectionId: "About" },
+    { name: "Experience", href: "#Experience", sectionId: "Experience" },
+    { name: "Case Studies", href: "#CaseStudies", sectionId: "CaseStudies" },
+    { name: "AI Playbook", href: "/ai-playbook", isRoute: true },
+    { name: "Contact", href: "#Contact", sectionId: "Contact" },
   ];
+
+  // Track active section based on scroll position
+  useEffect(() => {
+    const sectionIds = ["Homepage", "About", "Experience", "CaseStudies", "Contact"];
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // Offset for better UX
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -82,14 +106,25 @@ const Hero = () => {
               </button>
               <nav className="mobile-drawer__nav">
                 {navLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="mobile-drawer__link"
-                    onClick={handleNavClick}
-                  >
-                    {link.name}
-                  </a>
+                  link.isRoute ? (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="mobile-drawer__link"
+                      onClick={handleNavClick}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className={`mobile-drawer__link ${activeSection === link.sectionId ? "mobile-drawer__link--active" : ""}`}
+                      onClick={handleNavClick}
+                    >
+                      {link.name}
+                    </a>
+                  )
                 ))}
               </nav>
               <div className="mobile-drawer__social">
@@ -117,9 +152,19 @@ const Hero = () => {
       <aside className="sidebar">
         <nav className="sidebar__nav">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="sidebar__link">
-              {link.name}
-            </a>
+            link.isRoute ? (
+              <Link key={link.name} to={link.href} className="sidebar__link">
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`sidebar__link ${activeSection === link.sectionId ? "sidebar__link--active" : ""}`}
+              >
+                {link.name}
+              </a>
+            )
           ))}
         </nav>
         <div className="sidebar__bottom">
@@ -166,18 +211,16 @@ const Hero = () => {
             >
               Product Manager
             </motion.h2>
-            <motion.p
+            <motion.ul
               className="hero-intro__hook"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Former full-stack engineer turned PM.
-              <br />
-              Scaling an ML platform to 20K+ users.
-              <br />
-              Previously shipped HIPAA-compliant products for U.S. Army and Fortune 500 clients.
-            </motion.p>
+              <li>Former full-stack engineer turned PM.</li>
+              <li>Scaling an ML platform to 20K+ users.</li>
+              <li>Previously shipped HIPAA-compliant products for U.S. Army and Fortune 500 clients.</li>
+            </motion.ul>
           </div>
         </div>
 
@@ -192,7 +235,7 @@ const Hero = () => {
           <h3>About</h3>
           <div className="about-section__content">
             <p>
-              I'm a Product Manager with 6+ years of experience building 0→1
+              I'm an experienced Product Manager who has built 0→1
               products across healthcare, enterprise, and consumer domains. I
               have a full-stack engineering background, which means I can
               prototype, ship fast, and speak fluently with engineering teams.

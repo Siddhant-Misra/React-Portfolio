@@ -15,17 +15,12 @@ const overlayVariants = {
   exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
-const categoryVariants = {
-  collapsed: { height: 0, opacity: 0 },
-  expanded: { height: "auto", opacity: 1, transition: { duration: 0.3 } },
-};
-
 const AIPlaybook = () => {
-  const [expandedCategory, setExpandedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
   useEffect(() => {
-    if (selectedEntry) {
+    if (selectedCategory || selectedEntry) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
@@ -33,22 +28,27 @@ const AIPlaybook = () => {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [selectedEntry]);
+  }, [selectedCategory, selectedEntry]);
 
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === "Escape" && selectedEntry) {
-        setSelectedEntry(null);
+      if (e.key === "Escape") {
+        if (selectedEntry) {
+          setSelectedEntry(null);
+        } else if (selectedCategory) {
+          setSelectedCategory(null);
+        }
       }
     };
     document.addEventListener("keydown", handleEscape);
     return () => document.removeEventListener("keydown", handleEscape);
-  }, [selectedEntry]);
+  }, [selectedEntry, selectedCategory]);
 
   const categories = [
     {
       id: "rag",
       title: "RAG",
+      icon: "🔍",
       color: "#10a37f",
       entries: [
         {
@@ -66,6 +66,7 @@ const AIPlaybook = () => {
     {
       id: "prompt-engineering",
       title: "Prompt Engineering",
+      icon: "✨",
       color: "#a78bfa",
       entries: [
         {
@@ -83,6 +84,7 @@ const AIPlaybook = () => {
     {
       id: "observability",
       title: "Observability",
+      icon: "📊",
       color: "#f59e0b",
       entries: [
         {
@@ -100,6 +102,7 @@ const AIPlaybook = () => {
     {
       id: "agents",
       title: "Agents",
+      icon: "🤖",
       color: "#ef4444",
       entries: [
         {
@@ -117,6 +120,7 @@ const AIPlaybook = () => {
     {
       id: "evaluation",
       title: "Evaluation",
+      icon: "📈",
       color: "#3b82f6",
       entries: [
         {
@@ -134,6 +138,7 @@ const AIPlaybook = () => {
     {
       id: "pm-perspective",
       title: "PM Perspective",
+      icon: "💡",
       color: "#ec4899",
       entries: [
         {
@@ -150,24 +155,24 @@ const AIPlaybook = () => {
     },
   ];
 
-  const toggleCategory = (categoryId) => {
-    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  const handleCardClick = (category) => {
+    setSelectedCategory(category);
   };
 
-  const handleClose = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
+  const handleEntryClick = (entryId) => {
+    setSelectedEntry(entryId);
+  };
+
+  const handleCloseCategory = () => {
+    setSelectedCategory(null);
+  };
+
+  const handleCloseEntry = () => {
     setSelectedEntry(null);
   };
 
-  const selected = selectedEntry
-    ? categories
-        .flatMap((cat) =>
-          cat.entries.map((entry) => ({ ...entry, categoryColor: cat.color, categoryTitle: cat.title }))
-        )
-        .find((entry) => entry.id === selectedEntry)
+  const selectedEntryData = selectedEntry && selectedCategory
+    ? selectedCategory.entries.find((entry) => entry.id === selectedEntry)
     : null;
 
   return (
@@ -177,57 +182,30 @@ const AIPlaybook = () => {
         <p>Practical guides for building with AI</p>
       </div>
 
-      <div className="ai-playbook-categories">
+      <div className="ai-playbook-grid">
         {categories.map((category) => (
-          <div
+          <motion.div
             key={category.id}
-            className={`ai-playbook-category ${
-              expandedCategory === category.id ? "ai-playbook-category--expanded" : ""
-            }`}
+            className="ai-playbook-card"
             style={{ "--accent-color": category.color }}
+            onClick={() => handleCardClick(category)}
+            whileHover={{ y: -4 }}
+            transition={{ duration: 0.2 }}
           >
-            <button
-              className="ai-playbook-category__header"
-              onClick={() => toggleCategory(category.id)}
-            >
-              <span className="ai-playbook-category__title">{category.title}</span>
-              <span className="ai-playbook-category__count">
-                {category.entries.length} entries
-              </span>
-              <span className="ai-playbook-category__chevron">
-                {expandedCategory === category.id ? "−" : "+"}
-              </span>
-            </button>
-
-            <AnimatePresence>
-              {expandedCategory === category.id && (
-                <motion.div
-                  className="ai-playbook-category__entries"
-                  initial="collapsed"
-                  animate="expanded"
-                  exit="collapsed"
-                  variants={categoryVariants}
-                >
-                  {category.entries.map((entry) => (
-                    <div
-                      key={entry.id}
-                      className="ai-playbook-entry"
-                      onClick={() => setSelectedEntry(entry.id)}
-                    >
-                      <span className="ai-playbook-entry__title">{entry.title}</span>
-                      <span className="ai-playbook-entry__arrow">→</span>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+            <div className="ai-playbook-card__icon">{category.icon}</div>
+            <h3 className="ai-playbook-card__title">{category.title}</h3>
+            <span className="ai-playbook-card__count">
+              {category.entries.length} entries
+            </span>
+            <div className="ai-playbook-card__accent" />
+          </motion.div>
         ))}
       </div>
 
+      {/* Category Modal - shows entries list */}
       {createPortal(
         <AnimatePresence>
-          {selected && (
+          {selectedCategory && !selectedEntry && (
             <>
               <motion.div
                 className="modal-overlay"
@@ -235,7 +213,62 @@ const AIPlaybook = () => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                onClick={handleClose}
+                onClick={handleCloseCategory}
+              />
+              <motion.div
+                className="modal ai-playbook-category-modal"
+                variants={modalVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <div
+                  className="modal__header"
+                  style={{ borderColor: selectedCategory.color }}
+                >
+                  <div className="modal__header-info">
+                    <span className="modal__icon">{selectedCategory.icon}</span>
+                    <h2>{selectedCategory.title}</h2>
+                  </div>
+                  <button className="modal__close" onClick={handleCloseCategory}>
+                    ✕
+                  </button>
+                </div>
+                <div className="modal__content">
+                  <div className="ai-playbook-entries-list">
+                    {selectedCategory.entries.map((entry) => (
+                      <div
+                        key={entry.id}
+                        className="ai-playbook-entry-item"
+                        onClick={() => handleEntryClick(entry.id)}
+                      >
+                        <span className="ai-playbook-entry-item__title">
+                          {entry.title}
+                        </span>
+                        <span className="ai-playbook-entry-item__arrow">→</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+
+      {/* Entry Modal - shows individual entry content */}
+      {createPortal(
+        <AnimatePresence>
+          {selectedEntryData && (
+            <>
+              <motion.div
+                className="modal-overlay"
+                variants={overlayVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                onClick={handleCloseEntry}
               />
               <motion.div
                 className="modal ai-playbook-modal"
@@ -246,21 +279,24 @@ const AIPlaybook = () => {
               >
                 <div
                   className="modal__header"
-                  style={{ borderColor: selected.categoryColor }}
+                  style={{ borderColor: selectedCategory.color }}
                 >
                   <div className="modal__header-info">
-                    <span className="modal__category-tag" style={{ color: selected.categoryColor }}>
-                      {selected.categoryTitle}
+                    <span
+                      className="modal__category-tag"
+                      style={{ color: selectedCategory.color }}
+                    >
+                      {selectedCategory.title}
                     </span>
-                    <h2>{selected.title}</h2>
+                    <h2>{selectedEntryData.title}</h2>
                   </div>
-                  <button className="modal__close" onClick={handleClose}>
+                  <button className="modal__close" onClick={handleCloseEntry}>
                     ✕
                   </button>
                 </div>
                 <div className="modal__content">
                   <p className="ai-playbook-content__placeholder">
-                    {selected.content}
+                    {selectedEntryData.content}
                   </p>
                 </div>
               </motion.div>
